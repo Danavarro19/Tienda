@@ -26,10 +26,6 @@ public class Ejemplo_Tienda {
         boosterDao b = new boosterDao();
         jugadorDao j = new jugadorDao();
         
-        ArrayList<Booster> boosters=b.getBoosters();
-        for (Booster bst: boosters){
-            System.out.println(bst.getNombre());
-        }
         Jugador jugador = j.findAll().get(1);
         Tienda tienda = new Tienda(jugador);
     }
