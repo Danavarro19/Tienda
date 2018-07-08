@@ -56,24 +56,6 @@ CREATE TABLE `compra` (
   `idCompra` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `compra`
---
-
-INSERT INTO `compra` (`idJugador`, `idBooster`, `idCompra`) VALUES
-(0, 3, 1),
-(0, 2, 2),
-(0, 1, 3),
-(0, 2, 4),
-(0, 3, 5),
-(0, 3, 6),
-(0, 3, 7),
-(0, 3, 8),
-(0, 3, 9);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `jugador`
 --
 
