@@ -6,8 +6,8 @@
 package vista;
 
 import dao.CompraDao;
-import dao.boosterDao;
-import dao.jugadorDao;
+import dao.BoosterDao;
+import dao.JugadorDao;
 import entidades.Booster;
 import entidades.Compra;
 import entidades.Jugador;
@@ -42,7 +42,7 @@ public class Tienda extends JFrame{
     public Tienda(Jugador jugador){
         super("Tienda");
         this.jugador=jugador;
-        boosterDao b = new boosterDao();
+        BoosterDao b = new BoosterDao();
         boosters = b.getBoosters();
         initComponents();
         eventos();
@@ -66,20 +66,20 @@ public class Tienda extends JFrame{
         for (int i=0; i<3;i++){
             labels[i]=new JLabel();
             labels[i].setIcon(new ImageIcon(getClass().getResource(boosters.get(i).getNombre()+".png")));
-            labels[i].setBounds(i*150+30,70, 100, 100);
+            labels[i].setBounds(i*150+20,70, 100, 100);
             container.add(labels[i]);
             
             descripciones[i]=new JLabel("<html>"+boosters.get(i).getNombre()+"<br>"+"precio: "
                     +boosters.get(i).getPrecio()+"</html>");
-            descripciones[i].setBounds(i*150+30, 180, WIDTH, 40);
+            descripciones[i].setBounds(i*150+20, 180, WIDTH, 40);
             container.add(descripciones[i]);
         }
         
         cartera.setBounds(470, 10, WIDTH, HEIGHT);
-        comprarEst.setBounds(30, 220, WIDTH, HEIGHT);
-        comprarComod.setBounds(180, 220, WIDTH, HEIGHT);
-        comprarLlan.setBounds(320, 220, WIDTH, HEIGHT);
-        confirmar.setBounds(470, 490, WIDTH, HEIGHT);
+        comprarEst.setBounds(20, 220, WIDTH, HEIGHT);
+        comprarComod.setBounds(170, 220, WIDTH, HEIGHT);
+        comprarLlan.setBounds(310, 220, WIDTH, HEIGHT);
+        confirmar.setBounds(470, 510, WIDTH, HEIGHT);
         container.add(cartera);
         container.add(comprarEst);
         container.add(comprarComod);
@@ -95,30 +95,45 @@ public class Tienda extends JFrame{
         comprarEst.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CompraDao compraDao= new CompraDao();
-                compraDao.insert(new Compra(jugador.getIdJugador(),1));
-                jugador.setCartera(jugador.pagar(150));
-                cartera.setText(Integer.toString(jugador.getCartera()));
+                int precio =150;
+                if(jugador.verificarFondos(precio)){
+                    CompraDao compraDao= new CompraDao();
+                    JugadorDao jugadorDao= new JugadorDao();
+                    compraDao.insert(new Compra(jugador.getIdJugador(),1));
+                    jugador.setCartera(jugador.pagar(precio));
+                    cartera.setText(Integer.toString(jugador.getCartera()));
+                    jugadorDao.update(jugador);
+                }
             }
         });
         
         comprarComod.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CompraDao compraDao= new CompraDao();
-                compraDao.insert(new Compra(jugador.getIdJugador(),2));
-                jugador.setCartera(jugador.pagar(300));
-                cartera.setText(Integer.toString(jugador.getCartera()));
+                int precio=300;
+                if(jugador.verificarFondos(precio)){
+                    CompraDao compraDao= new CompraDao();
+                    JugadorDao jugadorDao= new JugadorDao();
+                    compraDao.insert(new Compra(jugador.getIdJugador(),2));
+                    jugador.setCartera(jugador.pagar(precio));
+                    cartera.setText(Integer.toString(jugador.getCartera()));
+                    jugadorDao.update(jugador);
+                }
             }
         });
 
         comprarLlan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CompraDao compraDao= new CompraDao();
-                compraDao.insert(new Compra(jugador.getIdJugador(),3));
-                jugador.setCartera(jugador.pagar(200));
-                cartera.setText(Integer.toString(jugador.getCartera()));
+                int precio=200;
+                if(jugador.verificarFondos(precio)){
+                    CompraDao compraDao= new CompraDao();
+                    JugadorDao jugadorDao= new JugadorDao();
+                    compraDao.insert(new Compra(jugador.getIdJugador(),3));
+                    jugador.setCartera(jugador.pagar(precio));
+                    cartera.setText(Integer.toString(jugador.getCartera()));
+                    jugadorDao.update(jugador);
+                }
             }
         });
     }

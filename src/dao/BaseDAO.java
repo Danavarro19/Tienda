@@ -27,6 +27,8 @@ public abstract class BaseDAO<T> implements DAO<T> {
     abstract PreparedStatement getInsertStatement(Connection con, T _new);
 
     abstract PreparedStatement getDeleteStatement(Connection con, T deleteObject);
+    
+    abstract PreparedStatement getUpdateStatement(Connection con, T updateObject);
 
     @Override
     public List<T> findAll() {
@@ -93,7 +95,20 @@ public abstract class BaseDAO<T> implements DAO<T> {
 
     @Override
     public boolean update(T updateObject) {
-        return false;
+        Connection con = null;
+        boolean updated = false;
+        try {
+            con = this.con.getConnection();
+            PreparedStatement preparedStatement = getUpdateStatement(con, updateObject);
+            updated = preparedStatement.execute();
+
+            preparedStatement.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            close(con);
+        }
+        return updated;
     }
 
     @Override

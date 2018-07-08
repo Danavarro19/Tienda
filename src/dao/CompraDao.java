@@ -83,5 +83,10 @@ public class CompraDao extends BaseDAO<Compra>{
         }
         return preparedStatement;
     }
+
+    @Override
+    PreparedStatement getUpdateStatement(Connection con, Compra updateObject) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

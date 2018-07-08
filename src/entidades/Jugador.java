@@ -37,6 +37,8 @@ public class Jugador {
 
     public void setCartera(int cartera) {this.cartera = cartera;}
     
+    public boolean verificarFondos(int precio){return (cartera>=precio);}
+    
     public int pagar(int precio){
         if (cartera>=precio)
             cartera-=precio;

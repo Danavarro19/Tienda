@@ -5,8 +5,8 @@
  */
 package ejemplo_tienda;
 
-import dao.boosterDao;
-import dao.jugadorDao;
+import dao.BoosterDao;
+import dao.JugadorDao;
 import entidades.Booster;
 import entidades.Jugador;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ public class Ejemplo_Tienda {
      */
     public static void main(String[] args) {
         
-        boosterDao b = new boosterDao();
-        jugadorDao j = new jugadorDao();
+        BoosterDao b = new BoosterDao();
+        JugadorDao j = new JugadorDao();
         
         Jugador jugador = j.findAll().get(1);
         Tienda tienda = new Tienda(jugador);
