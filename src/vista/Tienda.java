@@ -94,7 +94,8 @@ public class Tienda extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 CompraDao compraDao= new CompraDao();
                 compraDao.insert(new Compra(jugador.getIdJugador(),1));
-                jugador.setCartera(jugador.pagar(150));            
+                jugador.setCartera(jugador.pagar(150));
+                cartera.setText(Integer.toString(jugador.getCartera()));
             }
         });
         
@@ -104,6 +105,7 @@ public class Tienda extends JFrame{
                 CompraDao compraDao= new CompraDao();
                 compraDao.insert(new Compra(jugador.getIdJugador(),2));
                 jugador.setCartera(jugador.pagar(300));
+                cartera.setText(Integer.toString(jugador.getCartera()));
             }
         });
 
@@ -113,6 +115,7 @@ public class Tienda extends JFrame{
                 CompraDao compraDao= new CompraDao();
                 compraDao.insert(new Compra(jugador.getIdJugador(),3));
                 jugador.setCartera(jugador.pagar(200));
+                cartera.setText(Integer.toString(jugador.getCartera()));
             }
         });
     }

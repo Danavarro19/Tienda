@@ -22,8 +22,10 @@ public class Ejemplo_Tienda {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         boosterDao b = new boosterDao();
         jugadorDao j = new jugadorDao();
+        
         ArrayList<Booster> boosters=b.getBoosters();
         for (Booster bst: boosters){
             System.out.println(bst.getNombre());
