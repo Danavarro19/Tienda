@@ -32,7 +32,7 @@ public class Tienda extends JFrame{
     private JLabel[] labels;
     private JTextField cartera;
     private JLabel[] descripciones;
-    private JButton comprarEst, comprarLlan, comprarComod, confirmar;
+    private JButton comprarEst, comprarLlan, comprarComod;
     private Jugador jugador;
     private List<Booster> boosters;
     
@@ -54,7 +54,6 @@ public class Tienda extends JFrame{
         comprarEst = new JButton("comprar");
         comprarComod = new JButton("comprar");
         comprarLlan = new JButton("comprar");
-        confirmar = new JButton("confirmar");
         cartera= new JTextField();
         cartera.setEditable(false);
         cartera.setText(Integer.toString(jugador.getCartera()));
@@ -76,13 +75,11 @@ public class Tienda extends JFrame{
         comprarEst.setBounds(20, 220, WIDTH, HEIGHT);
         comprarComod.setBounds(170, 220, WIDTH, HEIGHT);
         comprarLlan.setBounds(310, 220, WIDTH, HEIGHT);
-        confirmar.setBounds(470, 510, WIDTH, HEIGHT);
         container.add(cartera);
         container.add(comprarEst);
         container.add(comprarComod);
         container.add(comprarLlan);
-        container.add(confirmar);
-        setSize(600,600);
+        setSize(600,400);
         setVisible(true);
     }
 
