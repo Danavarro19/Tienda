@@ -11,13 +11,10 @@ import dao.JugadorDao;
 import entidades.Booster;
 import entidades.Compra;
 import entidades.Jugador;
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.awt.image.ImageObserver.ERROR;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,13 +34,13 @@ public class Tienda extends JFrame{
     private JLabel[] descripciones;
     private JButton comprarEst, comprarLlan, comprarComod, confirmar;
     private Jugador jugador;
-    private ArrayList<Booster> boosters;
+    private List<Booster> boosters;
     
     public Tienda(Jugador jugador){
         super("Tienda");
         this.jugador=jugador;
         BoosterDao b = new BoosterDao();
-        boosters = b.getBoosters();
+        boosters = b.findAll();
         initComponents();
         eventos();
     }
